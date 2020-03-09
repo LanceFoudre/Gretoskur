@@ -26,3 +26,7 @@ app.get('/', function (req, res) {
 app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
 });
+
+app.get('/test-post', function (req, res) {
+    res.render('templates/post');
+});
