@@ -23,6 +23,10 @@ app.get('/', function (req, res) {
     res.render('root/index');
 });
 
+app.get('/homepage', function (req, res) {
+    res.render('root/homepage');
+});
+
 app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
 });
