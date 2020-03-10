@@ -28,8 +28,15 @@ app.get('/panzo', function (req, res) {
     db.getUser('d.panzoli')
         .catch((msg) => console.error(msg))
         .then((data) => res.send(data.biography));
+    
+app.get('/homepage', function (req, res) {
+    res.render('root/homepage');
 });
 
 app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
+});
+
+app.get('/test-post', function (req, res) {
+    res.render('templates/post');
 });
