@@ -28,6 +28,7 @@ app.get('/panzo', function (req, res) {
     db.getUser('d.panzoli')
         .catch((msg) => console.error(msg))
         .then((data) => res.send(data.biography));
+});
     
 app.get('/homepage', function (req, res) {
     res.render('root/homepage');

@@ -4,48 +4,59 @@ extend /templates/layout.pug
 block body
     include /templates/navbar.pug
 
-    div(class="card" style="width: 28em;")
+    div(class="card mx-auto" style="margin: 75px 25px 0px 25px; width: 75%;")
 
         // Header + Image
         div(class="card-header" style="padding: 5px 5%;")
-            div(class="row")
-                div(class="col-sm-1 p-0 align-middle text-center")
-                    // lien vers profil
-                    a(href="#")
-                        img(class="icone-profil" src="res/img/pfp-0.png" alt="i" style="width: 38px; clip-path: circle(50%);")
-                div(class="col-sm-10 p-0")
-                    h5(style="margin: 6px 5%;") Auteur
-                div(class="col-sm-1 p-0 align-middle text-center")
-                    button(type="button" class="btn")
-                        i(class="fas fa-bars")
-                    
+            div(class="align-middle text-center")
+                // image de profil + nom
+                a(href="#" class="float-left")
+                    img(class="icone-profil" src="res/img/pfp-0.png" alt="i" style="width: 38px; clip-path: circle(50%);")
+                a(href="#" class="float-left" style="text-decoration: none; color: black; margin: 6px 2%; font-weight: bold;") cookie.mrmnd
 
-        img(class="card-img-top" src="res/img/greta.jpg" alt="...")
+                // dropdown menu
+                div(class="dropdown float-right")
+                    button(class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                        i(class="fas fa-ellipsis-v")
+                    div(class="dropdown-menu" aria-labelledby="dropdownMenu1")
+                        button(class="dropdown-item" type="button") Partager
+                        button(class="dropdown-item" type="button") Voir la publication
+                        button(class="dropdown-item" type="button") Voir le profil
+                        button(class="dropdown-item text-danger" type="button") Se désabonner
 
-        // Titre + Description + Likes
+        a(href="#")
+            img(class="card-img-top" src="res/img/greta.jpg" alt="...")
+
+        // Description + Likes
         div(class="card-body" style="padding: 10px 5% 0 5%;")
-            h5(class="card-title") Bienvenue sur Gretagram
-            div(class="card-text" style="padding-bottom: 5px") Ce projet est vraiment douteux, aidez nous
-            button(type="button" class="btn")
-                i(class="far fa-heart")
-            span 156 J'aime
+            // J'aimes
+            div(class="align-middle" style="margin: -7px;")
+                button(type="button" class="btn" title="J'aime")
+                    i(class="far fa-heart")
+                span(style="font-size: 14px; font-weight: bold; color: #404040;") 156 J'aime
+            // Description
+            div(class="card-text" style="padding-bottom: 5px;")
+                p(style="font-size: 14px; margin: 0;") Ce projet est vraiment douteux, aidez nous
+                p(class="text-secondary" style="font-size: 11px; margin: 0;") IL Y A 23 HEURES
             hr(style="margin: 5px 0;")
 
         // Commentaires (top 3)
-        div(style="padding: 5px 5%;") 
+        div(style="padding: 5px 5%; font-size: 13px;") 
             div
-                span(class="font-weight-bold") niconico  
+                span(style="font-weight: bold; color: #404040;") niconico  
                 span @panzo.lol mdr ta vu sa?? xDDD
             div
-                span(class="font-weight-bold") panzo.lol 
+                span(style="font-weight: bold; color: #404040;") panzo.lol 
                 span Bonjour et bienvenue sur ce projet de web.
             div
-                span(class="font-weight-bold") cookie.mrmnd 
+                span(style="font-weight: bold; color: #404040;") cookie.mrmnd 
                 span F
+            div
+                a(href="#" style="text-decoration: none;") Voir tout les commentaires (5)
 
         // Ajouter un commentaire
         div(class="input-group mb-3")
-            input(type="text" class="form-control" placeholder="Ajoutez votre commentaire" aria-label="Contenu du Commentaire" aria-describedby="button-addon")
+            input(type="text" class="form-control" placeholder="Ajoutez un commentaire..." aria-label="Contenu du Commentaire" aria-describedby="button-addon" style="height: 37px; font-size: 13px;")
             div(class="input-group-append")
                 button(class="btn btn-outline-secondary" type="button" id="button-addon")
                     i(class="fas fa-paper-plane")
