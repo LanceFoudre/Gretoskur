@@ -2,7 +2,7 @@
     "files.exclude": {
         "node_modules": true,
         "node_linux_portable": true,
-        "package.json": true,
+        "package.json": false,
         "package-lock.json": true,
     }
 }
