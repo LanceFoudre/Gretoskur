@@ -56,21 +56,14 @@ app.post('/auth', function (req, res) {
 
 app.get('/panzo', function (req, res) {
     db.getUser('d.panzoli')
-        .catch((msg) => {
-            console.error(msg)
-            res.send({ data: "oui" });
-        })
-        .then((data) => res.send({ ejzn: "nierzs" }));
+        .catch((msg) => console.error(msg))
+        .then((data) => res.send(data.biography));
 });
-
+    
 app.get('/homepage', function (req, res) {
     res.render('root/homepage');
 });
 
 app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
-});
-
-app.get('/test-post', function (req, res) {
-    res.render('templates/post');
 });
