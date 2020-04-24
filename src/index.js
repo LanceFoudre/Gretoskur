@@ -119,6 +119,10 @@ app.get('/homepage', function (req, res) {
     res.render('root/homepage');
 });
 
+app.get('/profile', function (req, res) {
+    res.render('root/profile');
+});
+
 app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
 });

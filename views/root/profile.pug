@@ -1,0 +1,40 @@
+extend /templates/layout.pug
+
+block body
+    include /templates/navbar.pug
+
+    div(class="container" style="padding-top: 5em;")
+        div(class="card")
+            div(class="card-body")
+                div(class="media")
+                    a(href="#")
+                        img(class="icone-profil" src="res/img/pfp-0.png" alt="i" style="width: 200px; clip-path: circle(50%);")
+                    div(class="media-body p-3")
+                        h5(style="margin: 6px 5%;")
+                            a(class="text-dark text-decoration-none" href="#") Françovith Miramov
+                        div(style="margin: 0px 5%;")
+                            small(class="text-muted") cookie.mrmnd
+                        div(style="margin: 6px 5%;")
+                            p Description osef
+                hr
+                ul(class="nav justify-content-center")
+                    li(class="nav-item")
+                        a(class="nav-link active text-uppercase text-dark" href="#") Publications
+                    li(class="nav-item")
+                        a(class="nav-link text-uppercase text-muted" href="#") J'aime
+        br
+        div
+            div(class="row row-cols-1 row-cols-md-3")
+                div(class="col mb-4")
+                    div(class="card")
+                        img(src="res/img/2b.jpg" class="card-img" alt="...")
+                div(class="col mb-4")
+                    div(class="card")
+                        img(src="res/img/2b.jpg" class="card-img" alt="...")
+                div(class="col mb-4")
+                    div(class="card")
+                        img(src="res/img/2b.jpg" class="card-img" alt="...")
+                div(class="col mb-4")
+                    div(class="card")
+                        img(src="res/img/2b.jpg" class="card-img" alt="...")
+                    

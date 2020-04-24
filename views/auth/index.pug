@@ -1,9 +1,17 @@
-h1 TODO
-form(method="post")
-    div
-        p Test user is prefilled, just hit the button (not too hard tho')
-        input(type="text", name="username" autofocus)
-    div
-        input(type="password", name="password")
-    div
-        button(type="submit") Se connecter
+extend /templates/layout.pug
+
+block additional_stylesheets
+    link(rel="stylesheet", href="res/css/auth.css")
+
+block body
+    div(class="card text-center" style="width: 500px; margin: auto; height:100%")
+        div(class="card-body")
+            h1(class="card-title" style="padding-bottom:70px; margin-top:10%; margin-bottom:10%") Login
+            form(method="post" class="text-left")
+                div(style="margin-top: 0px; margin-bottom:20px; font-size:20px") Nom d'utilisateur
+                    input(class="form-control" type="text", name="username", value='a' autofocus)
+                div(style="margin-top: 10px; margin-bottom:20px; font-size:20px") Mot de passe
+                    input(class="form-control" type="password", name="password", value='a')
+                div(style="margin-top: 10px; margin-top:20%")   
+                    button(type="submit" class="btn btn-success btn-lg btn-block") Se connecter
+            
