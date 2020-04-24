@@ -19,7 +19,7 @@ exports.auth = {
         const sql = 'SELECT username FROM Connected WHERE token = ?';
         handle.get(sql, [token], (err, row) => {
             if (err) {
-                res.status(500).send('DB Error');
+                res.sendStatus(500);
                 console.error(err);
             }
             else {
@@ -27,13 +27,23 @@ exports.auth = {
                     req.username = row.username;
                     next();
 
-                } else {
-                    // User is not connected
-                    if (['/auth', '/favicon.ico'].includes(req.path)) next(); // The only pages accessible without being authenticated
-                    else {
-                        let fullUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + req.originalUrl);
-                        res.redirect('/auth?redirect=' + fullUrl);
+                } else { // User is not connected
+
+                    // Resources accessible without being authenticated
+                    if (['/auth', '/favicon.ico'].includes(req.path)) {
+                        next();
+                        return;
                     }
+
+                    // Deny XHR requests instead of redirecting to auth page
+                    if (req.xhr) {
+                        res.sendStatus(403);
+                        return;
+                    }
+
+                    // Redirect to auth page
+                    let fullUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + req.originalUrl);
+                    res.redirect('/auth?redirect=' + fullUrl);
                 }
             }
         });

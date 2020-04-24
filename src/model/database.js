@@ -17,6 +17,17 @@ process.on('exit', function () {
     });
 });
 
+function sanitizedDatabaseObject(dbObject) {
+    // Remove columns beginning with an underscore, they may contain sensitive information
+    if (!dbObject) return undefined;
+    
+    let obj = {};
+    for (const property in dbObject) {
+        if (!property.startsWith('_')) obj[property] = dbObject[property];
+    }
+    return obj;
+}
+
 
 // Getters
 exports.getUser = function (username) {
@@ -24,7 +35,7 @@ exports.getUser = function (username) {
         sql = 'SELECT * FROM User WHERE username = ?';
         handle.get(sql, [username], (err, row) => {
             if (err) reject(err.message);
-            else resolve(row);
+            else resolve(sanitizedDatabaseObject(row));
         });
     });
 };
@@ -34,7 +45,7 @@ exports.getPost = function (id) {
         sql = 'SELECT * FROM Post WHERE rowid = ?';
         handle.get(sql, [id], (err, row) => {
             if (err) reject(err.message);
-            else resolve(row);
+            else resolve(sanitizedDatabaseObject(row));
         });
     });
 };
@@ -44,6 +55,8 @@ exports.authUser = function (username, password) {
         const hasher = crypto.createHmac('sha512', username + 'REQUINQUER MDR');
         hasher.update(password);
         const hashed = hasher.digest('hex');
+
+        //console.log(hashed);
         
         sql = 'SELECT 1 FROM User WHERE username = ? AND password = ?';
         handle.get(sql, [username, hashed], (err, row) => {

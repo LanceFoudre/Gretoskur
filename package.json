@@ -22,6 +22,7 @@
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.2",
     "pug": "^2.0.4",
+    "sqlite": "^4.0.7",
     "sqlite3": "^4.1.1"
   }
 }

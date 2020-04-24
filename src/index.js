@@ -19,6 +19,7 @@ app.use(middlewares.auth.validate);
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '../views'));
 app.locals.basedir = app.get('views');
+app.locals.private_res = path.join(__dirname, '../private');
 
 app.listen(port, function () {
     console.log(`Listening on port ${port}`);
@@ -28,6 +29,60 @@ app.listen(port, function () {
 // Pages
 app.get('/', function (req, res) {
     res.render('root/index');
+});
+
+app.get('/cdn/user/:username/:data', function (req, res) {
+    switch (req.params.data) {
+        case 'pfp': {
+            db.getUser(req.params.username)
+                .then((user) => {
+                    if (!user) return res.sendStatus(404);
+
+                    res.sendFile(path.join(app.locals.private_res, 'user', user.pfp_file), (err) => {
+                        if (err) {
+                            console.error(err);
+                            if (!res.headersSent) res.sendStatus(404);
+                        }
+                    });
+                })
+                .catch((err) => {
+                    console.error(err);
+                    res.sendStatus(500);
+                });
+            break;
+        }
+        default: {
+            res.sendStatus(400);
+            break;
+        }
+    }
+});
+
+app.get('/cdn/post/:id/:data', function (req, res) {
+    switch (req.params.data) {
+        case 'img': {
+            db.getPost(req.params.id)
+                .then((post) => {
+                    if (!post) return res.sendStatus(404);
+
+                    res.sendFile(path.join(app.locals.private_res, 'post', post.img_file), (err) => {
+                        if (err) {
+                            console.error(err);
+                            if (!res.headersSent) res.sendStatus(404);
+                        }
+                    });
+                })
+                .catch((err) => {
+                    console.error(err);
+                    res.sendStatus(500);
+                });
+            break;
+        }
+        default: {
+            res.sendStatus(404);
+            break;
+        }
+    }
 });
 
 app.get('/auth', function (req, res) {
@@ -59,7 +114,7 @@ app.get('/panzo', function (req, res) {
         .catch((msg) => console.error(msg))
         .then((data) => res.send(data.biography));
 });
-    
+
 app.get('/homepage', function (req, res) {
     res.render('root/homepage');
 });
@@ -67,3 +122,5 @@ app.get('/homepage', function (req, res) {
 app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
 });
+
+//console.log(require('crypto').randomBytes(12).toString('hex'));
