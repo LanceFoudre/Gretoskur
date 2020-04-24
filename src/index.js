@@ -127,4 +127,8 @@ app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
 });
 
+app.get('/newPost', function (req, res) {
+    res.render('root/newPost');
+});
+
 //console.log(require('crypto').randomBytes(12).toString('hex'));

@@ -1,0 +1,31 @@
+extend /templates/layout.pug
+
+block body
+    include /templates/navbar.pug
+
+    div(class="container" style="padding-top: 5em; padding-bottom: 2em; width:50em")
+        div(class="card")
+            // Header + Image
+            div(class="card-header" style="padding: 5px 5%;")
+                div(class="align-middle text-center")
+                    // image de profil + nom                    class="rounded-left"
+                    h2(href="#" class="float-left" style="margin: 6px 2%;") Créer votre post :
+
+            div
+                img(class="card-img-top" src="res/img/youImageHere.png" style="padding-left:10%; padding-right:10%")
+
+            hr(style="margin: 0px 0;")
+
+            // Description + Likes
+            div(class="card-body" style="padding: 10px 5% 3% 5%;")
+                span(style="font-size: 14px; font-weight: bold; color: #404040;") Veuillez entrer une description :
+    
+            div(class="input-group mb-3")
+                div(class="input-group")
+                    textarea(class="form-control" placeholder="Votre description ici :" aria-label="With textarea" style="height: 100px; font-size: 13px; width:100%")
+
+            hr(style="margin: 10px 0px;")
+
+            div(class="card-body" style="padding: 10px 5% 3% 5%;")
+                span(style="font-size: 14px; font-weight: bold; color: #404040;") Ajouter une location :
+                include /templates/map.pug
