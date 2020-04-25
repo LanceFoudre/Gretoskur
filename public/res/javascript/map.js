@@ -8,29 +8,10 @@ var mymap = L.map('mapid').setView([44.017736, 1.354213], 13);
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
-	var clusterLayer = L.markerClusterGroup();
-		
-	var popup = L.popup();	
-		
-	for (m in markers) {
-		marker = L.marker([markers[m].lat, markers[m].lng], {
-			id: markers[m].id
-		})
-		.addTo(clusterLayer)
-
-		marker.bindPopup('<a href="http://www.airbnb.com/rooms/'+markers[m].id+'" target="blank">'+markers[m].id+"</a>");
-		marker.on('click', function (e) {
-			this.openPopup();
-		});
-	}	
-		
-	mymap.addLayer(clusterLayer);
-	
-	console.log(markers.length)
-	
+	var marker = L.marker([44.017736, 1.354213]).addTo(mymap);
 
 	function onMapClick(e) {
-		
+		marker.setLatLng(e.latlng)
 	}
 
-	//mymap.on('click', onMapClick);
+	mymap.on('click', onMapClick);

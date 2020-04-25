@@ -11,10 +11,22 @@ block body
                     // image de profil + nom                    class="rounded-left"
                     h2(href="#" class="float-left" style="margin: 6px 2%;") Créer votre post :
 
-            div
-                img(class="card-img-top" src="res/img/youImageHere.png" style="padding-left:10%; padding-right:10%")
+            div      
+                img(class="card-img-top" src="res/img/youImageHere.png" style="padding-left:10%; padding-right:10%" id="drop_zone")
+            
+            
 
-            hr(style="margin: 0px 0;")
+            hr(style="margin: 0px 0; margin-bottom:10px")
+
+            div(class="col")
+                div(class="row justify-content-center")
+                    form(class="my-form" style="margin: 0px 0; margin-bottom:10px; width:50%")
+                        input(type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)")
+                    div(class="progress" style="margin: 0px 0; margin-bottom:10px; width:50%")
+                        div(class="progress-bar" id="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")
+                    
+
+            hr(style="margin: 0px 0; margin-bottom:10px")
 
             // Description + Likes
             div(class="card-body" style="padding: 10px 5% 3% 5%;")
@@ -27,5 +39,10 @@ block body
             hr(style="margin: 10px 0px;")
 
             div(class="card-body" style="padding: 10px 5% 3% 5%;")
-                span(style="font-size: 14px; font-weight: bold; color: #404040;") Ajouter une location :
-                include /templates/map.pug
+                span(style="font-size: 14px; font-weight: bold; color: #404040; margin-bottom:50px") Ajouter une location : (cliquer pour placer votre location)
+                div(style="height:500px; width:100%")
+                    include /templates/map.pug
+            
+            div(style="margin-bottom: 30px; margin-top:20px")   
+                button(type="submit" class="btn btn-success btn-lg btn-block") Poster
+        script(src="res/javascript/drag_and_drop.js")
