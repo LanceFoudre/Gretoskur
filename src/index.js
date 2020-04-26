@@ -28,7 +28,7 @@ app.listen(port, function () {
 
 // Pages
 app.get('/', function (req, res) {
-    res.render('root/index');
+    res.render('root/homepage');
 });
 
 app.get('/cdn/user/:username/:data', function (req, res) {
@@ -115,10 +115,6 @@ app.get('/panzo', function (req, res) {
         .then((data) => res.send(data.biography));
 });
 
-app.get('/homepage', function (req, res) {
-    res.render('root/homepage');
-});
-
 app.get('/profile', function (req, res) {
     res.render('root/profile');
 });
@@ -129,6 +125,11 @@ app.get('/greta-moche', function (req, res) {
 
 app.get('/newPost', function (req, res) {
     res.render('root/newPost');
+});
+
+//Temporaire pour tester la page de post
+app.get('/thepost', function (req, res) {
+    res.render('root/postPage');
 });
 
 //console.log(require('crypto').randomBytes(12).toString('hex'));
