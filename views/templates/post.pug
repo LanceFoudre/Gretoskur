@@ -1,60 +1,63 @@
+- var username = "g.thunberg";
+- var id = "1";
+- var likes = "154";
+- var liked = true;
+- var description = "Ce projet est vraiment douteux, aidez nous bordel";
+- var comments = [{author: "niconico",content: "@panzo.lol mdr ta vu sa?? xDDD"},{author: "panzo.lol",content: "Bonjour et bienvenue sur ce projet de web."},{author: "cookie.mrmnd",content: "F"},{author: "tenka.kappa",content: "Jdois dire qu'on s'amuse vraiment pas"},{author: "gr.eg",content: "SHA"},{author: "bouoo",content: "je commentaire invisible"}];
+- var date = "il y a un an";
 
 div(class="card mx-auto mb-4")
 
-    // Header + Image
+    //- Header + Image
     div(class="card-header" style="padding: 5px 5%;")
         div(class="align-middle text-center")
-            // image de profil + nom                    class="rounded-left"
-            a(href="#" class="float-left")
-                img(class="icone-profil" src="res/img/pfp-0.png" alt="i" style="width: 38px; clip-path: circle(50%);")
-            a(href="#" class="float-left text-dark text-decoration-none" style="margin: 6px 2%; font-weight: bold;") cookie.mrmnd
+            //- image de profil + nom                    class="rounded-left"
+            a(href="/profile/" + username class="float-left")
+                img(class="icone-profil" src="/cdn/user/" + username + "/pfp" style="width: 38px; clip-path: circle(50%);")
+            a(href="/profile/" + username class="float-left text-dark text-decoration-none" style="margin: 6px 2%; font-weight: bold;") #{username}
 
-            // dropdown menu
+            //- dropdown menu
             div(class="dropdown float-right")
-                button(class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                button(class="btn" type="button" id="dropdownMenu1-" + id data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                     i(class="fas fa-ellipsis-v")
-                div(class="dropdown-menu" aria-labelledby="dropdownMenu1")
-                    button(class="dropdown-item" type="button") Partager
-                    button(class="dropdown-item" type="button") Voir la publication
-                    button(class="dropdown-item" type="button") Voir le profil
-                    button(class="dropdown-item text-danger" type="button") Se désabonner
+                div(class="dropdown-menu" aria-labelledby="dropdownMenu1-" + id)
+                    a(class="btn dropdown-item" href="/post/" + id) Voir la publication
+                    a(class="btn dropdown-item" href="/profile/" + username) Voir le profil
 
-    a(href="#")
-        img(class="card-img-top" src="res/img/greta.jpg")
+    a(href="/post/" + id)
+        img(class="card-img-top" src="/cdn/post/" + id + "/img")
 
-    // Description + Likes
+    //- Description + Likes
     div(class="card-body" style="padding: 10px 5% 0 5%;")
-        // J'aimes
+        //- J'aimes
         div(class="align-middle" style="margin: -7px;")
             button(type="button" class="btn" data-toggle="tooltip" data-placement="top" title="J'aime")
-                i(class="far fa-heart")
-            span(style="font-size: 14px; font-weight: bold; color: #404040;") 156 J'aime
-        // Description
+                if liked
+                    i(class="fas fa-heart" style="color: #ff4586;")
+                else
+                    i(class="far fa-heart")
+            span(style="font-size: 14px; font-weight: bold; color: #404040;") #{likes} J'aime
+        //- Description
         div(class="card-text" style="padding-bottom: 5px;")
-            p(style="font-size: 14px; margin: 0;") Ce projet est vraiment douteux, aidez nous
-            p(class="text-secondary" style="font-size: 11px; margin: 0;") IL Y A 23 HEURES
+            p(style="font-size: 14px; margin: 0;") #{description}
+            p(class="text-secondary" style="font-size: 11px; margin: 0;") #{date}
         hr(style="margin: 5px 0;")
 
-    // Commentaires (top 3)
+    //- Commentaires (top 3)
     div(style="padding: 5px 5%; font-size: 13px;") 
-        div
-            span(style="font-weight: bold; color: #404040;") niconico  
-            span @panzo.lol mdr ta vu sa?? xDDD
-        div
-            span(style="font-weight: bold; color: #404040;") panzo.lol 
-            span Bonjour et bienvenue sur ce projet de web.
-        div
-            span(style="font-weight: bold; color: #404040;") cookie.mrmnd 
-            span F
-        div
-            a(href="#" style="text-decoration: none;") Voir tout les commentaires (5)
+        each comment in comments.slice(0, 3)
+            div
+                span(style="font-weight: bold; color: #404040;") #{comment.author} 
+                span #{comment.content}
+        else
+            div Aucun commentaire
+        if comments.length > 3
+            a(href="/post/" + id style="text-decoration: none;") Voir tous les commentaires (#{comments.length})
 
-    // Ajouter un commentaire
-    div(class="input-group mb-3")
+    //- Ajouter un commentaire
+    form(class="input-group mb-3")
+        input(type="hidden" value="" + id)
         input(type="text" class="form-control" placeholder="Ajoutez un commentaire..." aria-label="Contenu du Commentaire" aria-describedby="button-addon" style="height: 38px; font-size: 13px;")
         div(class="input-group-append")
-            button(class="btn btn-outline-secondary" type="button" id="button-addon")
+            button(class="btn btn-outline-secondary button-add-comment" type="submit" id="button-addon")
                 i(class="fas fa-paper-plane")
-
-
-

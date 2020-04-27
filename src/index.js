@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const moment = require('moment');
 
 const middlewares = require('./middlewares/auth.js');
 const db = require('./model/database.js');
@@ -25,11 +26,17 @@ app.listen(port, function () {
     console.log(`Listening on port ${port}`);
 });
 
+moment.locale('fr');
+
 
 // Pages
 app.get('/', function (req, res) {
     res.render('root/index');
 });
+
+
+
+// CDN data
 
 app.get('/cdn/user/:username/:data', function (req, res) {
     switch (req.params.data) {
@@ -85,6 +92,18 @@ app.get('/cdn/post/:id/:data', function (req, res) {
     }
 });
 
+app.get('cdn/feed', function (req, res) {
+    if (req.query.after) {
+        // Get next post after some date
+    } else {
+        // Get last post
+    }
+});
+
+
+
+// Authentification system
+
 app.get('/auth', function (req, res) {
     res.render('auth/index');
 });
@@ -109,6 +128,9 @@ app.post('/auth', function (req, res) {
 });
 
 
+
+// Pages
+
 app.get('/panzo', function (req, res) {
     db.getUser('d.panzoli')
         .catch((msg) => console.error(msg))
@@ -128,3 +150,4 @@ app.get('/greta-moche', function (req, res) {
 });
 
 //console.log(require('crypto').randomBytes(12).toString('hex'));
+//console.log(moment('2010-05-10').fromNow());
