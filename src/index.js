@@ -132,4 +132,7 @@ app.get('/thepost', function (req, res) {
     res.render('root/postPage');
 });
 
+app.get('/stat', function (req, res) {
+    res.render('root/stats');
+});
 //console.log(require('crypto').randomBytes(12).toString('hex'));
