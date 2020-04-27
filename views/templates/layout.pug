@@ -17,9 +17,9 @@ html(lang="fr")
         //- Load bootstrap before anything else
         case process.env.NODE_ENV
             when 'development'
-                link(rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.css")
+                link(rel="stylesheet" href="/bootstrap-4.4.1-dist/css/bootstrap.css")
             default
-                link(rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css")
+                link(rel="stylesheet" href="/bootstrap-4.4.1-dist/css/bootstrap.min.css")
         
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css")
         block additional_stylesheets
@@ -34,10 +34,10 @@ html(lang="fr")
         //- Scripts
         case process.env.NODE_ENV
             when 'development'
-                script(src="jquery-3.4.1-dist/jquery.js")
-                script(src="bootstrap-4.4.1-dist/js/bootstrap.bundle.js")
+                script(src="/jquery-3.4.1-dist/jquery.js")
+                script(src="/bootstrap-4.4.1-dist/js/bootstrap.bundle.js")
             default
-                script(src="jquery-3.4.1-dist/jquery.min.js")
-                script(src="bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js")
+                script(src="/jquery-3.4.1-dist/jquery.min.js")
+                script(src="/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js")
 
         block additional_postscripts

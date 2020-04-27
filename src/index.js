@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const moment = require('moment');
+const pug = require('pug');
 
 const middlewares = require('./middlewares/auth.js');
 const db = require('./model/database.js');
@@ -27,14 +28,6 @@ app.listen(port, function () {
 });
 
 moment.locale('fr');
-
-
-// Pages
-app.get('/', function (req, res) {
-    res.render('root/homepage');
-});
-
-
 
 // CDN data
 
@@ -120,16 +113,66 @@ app.post('/auth', function (req, res) {
                         if (req.query.redirect) redirect = decodeURIComponent(req.query.redirect);
                         res.redirect(redirect);
                     })
-                    .catch((err) => console.error(err));
+                    .catch((err) => {
+                        console.error(err);
+                        res.sendStatus(500);
+                    });
             }
             else res.send('WRONG'); // TODO
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+            console.error(err);
+            return res.sendStatus(500);
+        });
 });
 
 
 
 // Pages
+
+app.get('/', function (req, res) {
+    res.render('root/homepage');
+});
+
+app.get('/profile/:username', function (req, res) {
+    db.getUser(req.params.username)
+        .then((user) => {
+            if (user) {
+                db.getUserPosts(user.username)
+                    .then((user_posts) => {
+                        db.getUserLikes(user.username)
+                            .then((user_likes) => {
+                                res.render('root/profile', {
+                                    display_name: user.display_name,
+                                    username: user.username,
+                                    biography: user.biography,
+                                    pfp_path: user.pfp_path,
+                                    posts: user_posts,
+                                    likes: user_likes
+                                });
+                            })
+                            .catch((err) => {
+                                console.error(err);
+                                res.sendStatus(500);
+                            });
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        res.sendStatus(500);
+                    });
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.sendStatus(500);
+        });
+});
+
+app.get('/newPost', function (req, res) {
+    res.render('root/newPost');
+});
 
 app.get('/panzo', function (req, res) {
     db.getUser('d.panzoli')
@@ -137,16 +180,8 @@ app.get('/panzo', function (req, res) {
         .then((data) => res.send(data.biography));
 });
 
-app.get('/profile', function (req, res) {
-    res.render('root/profile');
-});
-
 app.get('/greta-moche', function (req, res) {
     res.send('Pauvre greta, la bullied');
-});
-
-app.get('/newPost', function (req, res) {
-    res.render('root/newPost');
 });
 
 //Temporaire pour tester la page de post

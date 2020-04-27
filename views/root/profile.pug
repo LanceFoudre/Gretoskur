@@ -7,38 +7,40 @@ block body
         div(class="card")
             div(class="card-body")
                 div(class="media")
-                    a(href="#")
-                        img(class="icone-profil" src="res/img/pfp-0.png" alt="i" style="width: 200px; clip-path: circle(50%);")
+                    img(class="icone-profil" src="/cdn/user/" + username + "/pfp" alt="i" style="width: 200px; clip-path: circle(50%);")
                     div(class="media-body p-3")
-                        h5(style="margin: 6px 5%;")
-                            a(class="text-dark text-decoration-none" href="#") Françovith Miramov
+                        h5(class="text-dark text-decoration-none" style="margin: 6px 5%;") #{display_name}
                         div(style="margin: 0px 5%;")
-                            small(class="text-muted") cookie.mrmnd
+                            small(class="text-muted") #{username}
                         div(style="margin: 6px 5%;")
-                            p Description osef
+                            p #{biography}
                 hr
-                ul(class="nav justify-content-center")
+                ul(class="nav nav-pills justify-content-center text-uppercase" role="tablist")
                     li(class="nav-item")
-                        a(class="nav-link active text-uppercase text-dark" href="#") Publications
+                        a(class="nav-link active" id="profile-posts-tab" data-toggle="pill" href="#profile-posts" role="tab" aria-controls="profile-posts" aria-selected="true") Publications
                     li(class="nav-item")
-                        a(class="nav-link text-uppercase text-muted" href="#") J'aime
+                        a(class="nav-link" id="profile-likes-tab" data-toggle="pill" href="#profile-likes" role="tab" aria-controls="profile-likes" aria-selected="false") J'aimes
         br
-        div
-            div(class="row row-cols-1 row-cols-md-3")
-                div(class="col mb-4")
-                    div(class="card")
-                        a(href="/thepost")
-                            img(src="res/img/2b.jpg" class="card-img" alt="...")
-                div(class="col mb-4")
-                    div(class="card")
-                        a(href="/thepost")
-                            img(src="res/img/2b.jpg" class="card-img" alt="...")
-                div(class="col mb-4")
-                    div(class="card")
-                        a(href="/thepost")
-                            img(src="res/img/2b.jpg" class="card-img" alt="...")
-                div(class="col mb-4")
-                    div(class="card")
-                        a(href="/thepost")
-                            img(src="res/img/2b.jpg" class="card-img" alt="...")
+        div(class="tab-content")
+            div(class="tab-pane fade show active" id="profile-posts" role="tabpanel" aria-labelledby="profile-posts-tab")
+                if posts.length
+                    div(class="row row-cols-1 row-cols-md-3")
+                        each post in posts
+                            div(class="col mb-4")
+                                div(class="card")
+                                    a(href="/post/" + post)
+                                        img(src="/cdn/post/" + post + "/img" class="card-img")
+                else
+                    div(class="alert alert-dark text-center" role="alert") C'est utilisateur n'a encore rien posté
+
+            div(class="tab-pane fade" id="profile-likes" role="tabpanel" aria-labelledby="profile-likes-tab")
+                if likes.length
+                    div(class="row row-cols-1 row-cols-md-3")
+                        each like in likes
+                            div(class="col mb-4")
+                                div(class="card")
+                                    a(href="/post/" + like)
+                                        img(src="/cdn/post/" + like + "/img" class="card-img")
+                else
+                    div(class="alert alert-dark text-center" role="alert") Cet utilisateur n'a encore rien liké
                     
