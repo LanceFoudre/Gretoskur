@@ -170,8 +170,8 @@ app.get('/profile/:username', function (req, res) {
         });
 });
 
-app.get('/newPost', function (req, res) {
-    res.render('root/newPost');
+app.get('/new_post', function (req, res) {
+    res.render('root/new_post');
 });
 
 app.get('/panzo', function (req, res) {
@@ -185,8 +185,8 @@ app.get('/greta-moche', function (req, res) {
 });
 
 //Temporaire pour tester la page de post
-app.get('/thepost', function (req, res) {
-    res.render('root/postPage');
+app.get('/post', function (req, res) {
+    res.render('root/post');
 });
 
 app.get('/stat', function (req, res) {
