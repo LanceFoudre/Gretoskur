@@ -1,1 +1,0 @@
-PATH=$PATH:node_linux_portable/bin
