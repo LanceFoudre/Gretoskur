@@ -3,9 +3,12 @@ extend /templates/layout.pug
 block body
     include /templates/navbar.pug
 
+block additional_postscripts
+    script(src="/res/js/load_content.js")
+
     div(class="container" style="padding-top: 5em;")
         div(class="row")
-            div(class="col")
+            div(class="col" id="content_loader")
                 include /templates/post.pug
                 include /templates/post.pug
                 include /templates/post.pug
@@ -32,4 +35,60 @@ block body
                             h5(class="card-title") Big useless title here
                             p(class="card-text") Actually we still don't know what to add in this card
                             a(href="/new_post" class="btn btn-primary") Publier
-                                
+
+                    div(class="row card" style="margin-top:30px")
+                        div(class="card-body")
+                            div(class="col")
+                                div(class="row")
+                                    small(class="text-muted" style="margin-left: -2px;") Trending in France :
+                                div(class="row")
+                                    h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
+                                        a(class="text-dark text-decoration-none" href="/profile") Françovith Miramov
+                        hr(style="margin-top:-5px; margin-bottom:-5px")
+                        div(class="card-body")
+                            div(class="col")
+                                div(class="row")
+                                    small(class="text-muted" style="margin-left: -2px;") Trending in dev :
+                                div(class="row")
+                                    h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
+                                        a(class="text-dark text-decoration-none" href="/profile") I wanna die
+                        hr(style="margin-top:-5px; margin-bottom:-5px")
+                        div(class="card-body")
+                            div(class="col")
+                                div(class="row")
+                                    small(class="text-muted" style="margin-left: -2px;") Trending in trending :
+                                div(class="row")
+                                    h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
+                                        a(class="text-dark text-decoration-none" href="/profile") Wtf is wrong ?
+                        hr(style="margin-top:-5px; margin-bottom:-5px")
+                        div(class="card-body")
+                            div(class="col")
+                                div(class="row")
+                                    small(class="text-muted" style="margin-left: -2px;") Trending in hell :
+                                div(class="row")
+                                    h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
+                                        a(class="text-dark text-decoration-none" href="/profile") Montaut
+                        hr(style="margin-top:-5px; margin-bottom:-5px")
+                        div(class="card-body")
+                            div(class="col")
+                                div(class="row")
+                                    small(class="text-muted" style="margin-left: -2px;") Trending in group :
+                                div(class="row")
+                                    h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
+                                        a(class="text-dark text-decoration-none" href="/profile") This project suck
+                        hr(style="margin-top:-5px; margin-bottom:-5px")
+                        div(class="card-body")
+                            div(class="col")
+                                div(class="row")
+                                    small(class="text-muted" style="margin-left: -2px;") Trending in Fronfois :
+                                div(class="row")
+                                    h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
+                                        a(class="text-dark text-decoration-none" href="/profile") J'en ai marre de faire des posts
+                        hr(style="margin-top:-5px; margin-bottom:-5px")
+                        div(class="card-body")
+                            div(class="col")
+                                div(class="row")
+                                    small(class="text-muted" style="margin-left: -2px;") Trending in World
+                                div(class="row")
+                                    h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
+                                        a(class="text-dark text-decoration-none" href="/profile") We're all gonna die
