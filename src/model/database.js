@@ -3,7 +3,7 @@ const crypto = require('crypto');
 
 const handle = new sqlite3.Database('./db.sqlite', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
-        console.log(err.message);
+        console.error(err.message);
     }
     console.log('Connected to global database');
 });

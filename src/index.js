@@ -85,7 +85,7 @@ app.get('/cdn/post/:id/:data', function (req, res) {
     }
 });
 
-app.get('cdn/feed', function (req, res) {
+app.get('/cdn/feed', function (req, res) {
     if (req.query.after) {
         // Get next post after some date
     } else {
