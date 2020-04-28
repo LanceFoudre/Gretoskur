@@ -23,7 +23,7 @@
             "password": "panzomug",
             "biography": "Bonjour et bienvenue sur mon profil gretagram",
             "display_name": "D.Panzoli",
-            "pfp_file": "jZBkiHrjjL.png"
+            "pfp_file": "jZBkiHrjjL.webp"
         },
         {
             "id": 2000003,
@@ -38,7 +38,7 @@
             "username": "tenka",
             "password": "futababe",
             "biography": "J'AIME ATOMIUM ET LES ROLLERS",
-            "display_name": "Hugo Trsdn",
+            "display_name": "Hugo Trsd",
             "pfp_file": "pa1qRRp7Wn.png"
         },
         {
@@ -71,7 +71,7 @@
             "password": "jsuismemepasdanscegroupe",
             "biography": "Coucou ^^",
             "display_name": "Alex",
-            "pfp_file": "lqtWJPFKVB.png"
+            "pfp_file": null
         },
         {
             "id": 2000009,
@@ -79,7 +79,7 @@
             "password": "a",
             "biography": "AAAAAAAAAAAAAA",
             "display_name": "A",
-            "pfp_file": "default.png"
+            "pfp_file": null
         },
         {
             "id": 2000010,

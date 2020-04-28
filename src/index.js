@@ -38,7 +38,8 @@ app.get('/cdn/user/:username/:data', function (req, res) {
                 .then((user) => {
                     if (!user) return res.sendStatus(404);
 
-                    res.sendFile(path.join(app.locals.private_res, 'user', user.pfp_file), (err) => {
+                    let toSend = user.pfp_file ? user.pfp_file : 'default.png';
+                    res.sendFile(path.join(app.locals.private_res, 'user', toSend), (err) => {
                         if (err) {
                             console.error(err);
                             if (!res.headersSent) res.sendStatus(404);
