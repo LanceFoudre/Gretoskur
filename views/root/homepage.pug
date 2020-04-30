@@ -17,14 +17,14 @@ block additional_postscripts
                 div(style="position:fixed; width:18%;")
                     //- lien vers profil
                     div(class="row" style="margin-bottom:15px; margin-top:3px; margin-left:-2px;")
-                        a(href="/profile")
-                            img(class="icone-profil" src="/res/img/pfp-0.png" alt="i" style="width: 50px; clip-path: circle(50%);")
+                        a(href="/profile/" + user.username)
+                            img(class="icone-profil" src="/cdn/user/" + user.username + "/pfp" style="width: 50px; clip-path: circle(50%);")
                         div(class="col")
                             div(class="row")
                                 h5(style="margin: 6px 5%;")
-                                    a(class="text-dark text-decoration-none" href="/profile") Françovith Miramov
+                                    a(class="text-dark text-decoration-none" href="/profile/" + user.username) #{user.display_name}
                             div(class="row")
-                                small(class="text-muted" style="margin: -5px 5%;") cookie.mrmnd
+                                small(class="text-muted" style="margin: -5px 5%;") @#{user.username}
                     div(class="row card")
                         div(class="card-body")
                             div(class="row")
@@ -43,7 +43,7 @@ block additional_postscripts
                                     small(class="text-muted" style="margin-left: -2px;") Trending in France :
                                 div(class="row")
                                     h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
-                                        a(class="text-dark text-decoration-none" href="/profile") Françovith Miramov
+                                        a(class="text-dark text-decoration-none" href="/profile/" + user.username) Françovith Miramov
                         hr(style="margin-top:-5px; margin-bottom:-5px")
                         div(class="card-body")
                             div(class="col")
@@ -51,7 +51,7 @@ block additional_postscripts
                                     small(class="text-muted" style="margin-left: -2px;") Trending in dev :
                                 div(class="row")
                                     h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
-                                        a(class="text-dark text-decoration-none" href="/profile") I wanna die
+                                        a(class="text-dark text-decoration-none" href="/profile/" + user.username) I wanna die
                         hr(style="margin-top:-5px; margin-bottom:-5px")
                         div(class="card-body")
                             div(class="col")
@@ -59,7 +59,7 @@ block additional_postscripts
                                     small(class="text-muted" style="margin-left: -2px;") Trending in trending :
                                 div(class="row")
                                     h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
-                                        a(class="text-dark text-decoration-none" href="/profile") Wtf is wrong ?
+                                        a(class="text-dark text-decoration-none" href="/profile/" + user.username) Wtf is wrong ?
                         hr(style="margin-top:-5px; margin-bottom:-5px")
                         div(class="card-body")
                             div(class="col")
@@ -67,7 +67,7 @@ block additional_postscripts
                                     small(class="text-muted" style="margin-left: -2px;") Trending in hell :
                                 div(class="row")
                                     h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
-                                        a(class="text-dark text-decoration-none" href="/profile") Montaut
+                                        a(class="text-dark text-decoration-none" href="/profile/" + user.username) Montaut
                         hr(style="margin-top:-5px; margin-bottom:-5px")
                         div(class="card-body")
                             div(class="col")
@@ -75,7 +75,7 @@ block additional_postscripts
                                     small(class="text-muted" style="margin-left: -2px;") Trending in group :
                                 div(class="row")
                                     h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
-                                        a(class="text-dark text-decoration-none" href="/profile") This project suck
+                                        a(class="text-dark text-decoration-none" href="/profile/" + user.username) This project suck
                         hr(style="margin-top:-5px; margin-bottom:-5px")
                         div(class="card-body")
                             div(class="col")
@@ -83,7 +83,7 @@ block additional_postscripts
                                     small(class="text-muted" style="margin-left: -2px;") Trending in Fronfois :
                                 div(class="row")
                                     h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
-                                        a(class="text-dark text-decoration-none" href="/profile") J'en ai marre de faire des posts
+                                        a(class="text-dark text-decoration-none" href="/profile/" + user.username) J'en ai marre de faire des posts
                         hr(style="margin-top:-5px; margin-bottom:-5px")
                         div(class="card-body")
                             div(class="col")
@@ -91,4 +91,4 @@ block additional_postscripts
                                     small(class="text-muted" style="margin-left: -2px;") Trending in World
                                 div(class="row")
                                     h5(style="margin-left: -2px; margin-top:0px; margin-bottom: 0px")
-                                        a(class="text-dark text-decoration-none" href="/profile") We're all gonna die
+                                        a(class="text-dark text-decoration-none" href="/profile/" + user.username) We're all gonna die

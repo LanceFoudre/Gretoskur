@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const moment = require('moment');
-const pug = require('pug');
 
 const middlewares = require('./middlewares/auth.js');
 const db = require('./model/database.js');
@@ -132,7 +131,16 @@ app.post('/auth', function (req, res) {
 // Pages
 
 app.get('/', function (req, res) {
-    res.render('root/homepage');
+    db.getUser(req.username)
+        .then((user) => {
+            res.render('root/homepage', {
+                user: user
+            });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.sendStatus(500);
+        });
 });
 
 app.get('/profile/:username', function (req, res) {
@@ -143,13 +151,10 @@ app.get('/profile/:username', function (req, res) {
                     .then((user_posts) => {
                         db.getUserLikes(user.username)
                             .then((user_likes) => {
+                                user.posts = user_posts;
+                                user.likes = user_likes;
                                 res.render('root/profile', {
-                                    display_name: user.display_name,
-                                    username: user.username,
-                                    biography: user.biography,
-                                    pfp_path: user.pfp_path,
-                                    posts: user_posts,
-                                    likes: user_likes
+                                    user: user
                                 });
                             })
                             .catch((err) => {
