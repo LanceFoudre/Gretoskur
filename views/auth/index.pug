@@ -4,14 +4,14 @@ block additional_stylesheets
     link(rel="stylesheet", href="res/css/auth.css")
 
 block body
-    div(class="card text-center" style="width: 500px; margin: auto; height:100%")
-        div(class="card-body")
-            h1(class="card-title" style="padding-bottom:70px; margin-top:10%; margin-bottom:10%") Login
+    div(class="card text-center" style="width: 500px; margin: auto;")
+        div(class="card-body" style="margin-top:10%")
+            h1(class="card-title" style="padding-bottom:70px; margin-top:4%; margin-bottom:10%") Login
             form(method="post" class="text-left")
                 div(style="margin-top: 0px; margin-bottom:20px; font-size:20px") Nom d'utilisateur
                     input(class="form-control" type="text", name="username", value='a' autofocus)
                 div(style="margin-top: 10px; margin-bottom:20px; font-size:20px") Mot de passe
                     input(class="form-control" type="password", name="password", value='a')
-                div(style="margin-top: 10px; margin-top:20%")   
+                div(style="margin-top: 10px; margin-top:20%; margin-bottom:10%")   
                     button(type="submit" class="btn btn-success btn-lg btn-block") Se connecter
             

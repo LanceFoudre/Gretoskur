@@ -1,12 +1,13 @@
 html {
-    height: 92%;
+    height: 100%;
+    background-image: url('/res/img/greforet.webp');
+    background-repeat: no-repeat; 
+    background-size: cover;
+    
 }
 
 body {
-    height: 100%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    background-image: url('/res/img/greforet.webp'); 
-    background-repeat: no-repeat; 
-    background-size: cover;
+    margin-top:10%;
+    background-color: #00000000;
+    
 }
