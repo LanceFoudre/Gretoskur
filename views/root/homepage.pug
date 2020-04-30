@@ -1,11 +1,10 @@
 extend /templates/layout.pug
 
-block body
-    include /templates/navbar.pug
-
 block additional_postscripts
     script(src="/res/js/load_content.js")
 
+block body
+    include /templates/navbar.pug
     div(class="container" style="padding-top: 5em;")
         div(class="row")
             div(class="col" id="content_loader")
