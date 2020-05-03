@@ -198,5 +198,9 @@ app.get('/post', function (req, res) {
 app.get('/stat', function (req, res) {
     res.render('root/stats');
 });
+
+app.get('/succes', function (req, res) {
+    res.render('root/felicitation');
+});
 //console.log(require('crypto').randomBytes(12).toString('hex'));
 //console.log(moment('2010-05-10').fromNow());
