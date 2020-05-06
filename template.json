@@ -11,7 +11,7 @@
         },
         {
             "id": 2000001,
-            "username": "niconico",
+            "username": "Nicolas Fallieres",
             "password": "northgard",
             "biography": "Northgard player, and computer enthusiast",
             "display_name": "NicoNico",
@@ -37,7 +37,7 @@
             "id": 2000004,
             "username": "tenka",
             "password": "futababe",
-            "biography": "J'AIME ATOMIUM ET LES ROLLERS",
+            "biography": "20 M | likes: computers, bunnies and mood-related stuff",
             "display_name": "Hugo Trsd",
             "pfp_file": "pa1qRRp7Wn.png"
         },
@@ -149,7 +149,7 @@
         {
             "id": 2100006,
             "user": 2000002,
-            "description": "Achetez mon mug!",
+            "description": "Achetez mon mug! (Aller s'il vous plait)",
             "img_file": "eoJwFGvDPL.jpg",
             "date": "2020-04-07T15:45:00",
             "location_lat": 43.919596,
@@ -217,6 +217,15 @@
             "date": "2020-04-14T15:45:00",
             "location_lat": 43.919596,
             "location_lon": 2.138928
+        },
+        {
+            "id": 2100014,
+            "user": 2000001,
+            "description": "Super journée à Albi",
+            "img_file": "jcCg41pN1r.jpg",
+            "date": "2002-05-07T15:00:00",
+            "location_lat": 43.928449,
+            "location_lon": 2.143447
         }
     ],
 
@@ -269,6 +278,13 @@
             "author": 2000001,
             "content": "Salut, moi j'aime bien Northgard",
             "date": "2020-04-28T15:47:00"
+        },
+        {
+            "id": 2200007,
+            "post": 2100001,
+            "author": 2000007,
+            "content": "Moi aussi je veux des goodies!",
+            "date": "2020-04-29T15:47:00"
         }
     ],
 
